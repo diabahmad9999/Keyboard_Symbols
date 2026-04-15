@@ -4,4 +4,5 @@ Keyboard_Shortcuts is an HTML code that has common math, science, military, and 
 These codes can be copy and pasted when ever you need, and anywhere you want at any time.
 It has a section for Math symbols which can be useful when using exponents or roots.
 You can set up the file my either downolading it from ouisymbolsoui.html or using the link above.
-Thank you for using this repository.
+The code uses HTML, CSS, and JavaScript to reach the current format it is in.
+Thank you for using or viewing this repository.
