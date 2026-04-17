@@ -24,16 +24,46 @@
             display: none; z-index: 1000; font-weight: bold;
         }
         .heading {text-align: center; color: rgb(205,205,205)}
+     
+        #searchInput {
+  width: 250px;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;    
+}
+            
+        }
     </style>
+    <script>
+        function filterSymbols() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const communistSymbols = document.getElementById('communist-symbols');
+            const militarySymbols = document.getElementById('military-symbols');
+            if (searchInput.includes('communism')) {
+                communistSymbols.style.display = 'block';
+            } else {
+                communistSymbols.style.display = 'none';
+            }
+            if (searchInput.includes('military')) {
+                militarySymbols.style.display = 'block';
+            } else {
+                militarySymbols.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
 
 <div class="container">
     <h1 class="heading">Universal Symbol Library</h1>
 
-    <!-- Communist Symbols -->
-    <div class="section">
-        <h2 style="border-color: var(--communist)">Communist Symbols</h2>
+    
+    <input type="text" id="searchInput" onkeyup="filterSymbols()" placeholder="Search symbols..." />
+    
+    <div id="communist-symbols" style="display:none; margin-bottom:20px;">
+        <h2>Communist Symbols</h2>
         <div class="grid">
             <div class="item" onclick="copy('☭')"><span class="sym" style="color:red;">☭</span><span class="label">Hammer/Sickle</span></div>
             <div class="item" onclick="copy('🚩')"><span class="sym">🚩</span><span class="label">Red Flag</span></div>
@@ -45,8 +75,8 @@
     </div>
 
     <!-- Bundeswehr Symbols -->
-    <div class="section">
-        <h2 style="border-color: var(--bundeswehr)">Military</h2>
+    <div id="military-symbols" style="display:none; margin-bottom:20px;">
+        <h2>Military Symbols</h2>
         <div class="grid">
             <div class="item" onclick="copy('✠')"><span class="sym">✠</span><span class="label">Bundeswehr</span></div>
             <div class="item" onclick="copy('☫')"><span class="sym">☫</span><span class="label">Farsi</span></div>
