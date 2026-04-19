@@ -41,7 +41,7 @@
     const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
     const terms = searchInput.split(/\s+/);
 
-    const allSymbols = document.querySelectorAll('.symbol');
+    const allSymbols = document.querySelectorAll('.item');
     const resultsContainer = document.getElementById('search-results');
 
     resultsContainer.innerHTML = '';
@@ -85,7 +85,7 @@
 <body>
 
 <div class="container">
-    <h1 class="heading">Universal Symbol Library (updated)</h1>
+    <h1 class="heading">Universal Symbol Library (Test)</h1>
 
     
     <input type="text" id="searchInput" onkeyup="filterSymbols()" placeholder="Search symbols..." />
