@@ -38,20 +38,48 @@
     </style>
     <script>
         function filterSymbols() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const communistSymbols = document.getElementById('communist-symbols');
-            const militarySymbols = document.getElementById('military-symbols');
-            if (searchInput.includes('communism')) {
-                communistSymbols.style.display = 'block';
-            } else {
-                communistSymbols.style.display = 'none';
-            }
-            if (searchInput.includes('military')) {
-                militarySymbols.style.display = 'block';
-            } else {
-                militarySymbols.style.display = 'none';
-            }
+    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
+    const terms = searchInput.split(/\s+/);
+
+    const allSymbols = document.querySelectorAll('.symbol');
+    const resultsContainer = document.getElementById('search-results');
+
+    resultsContainer.innerHTML = '';
+
+    const communistSymbols = document.getElementById('communist-symbols');
+    const militarySymbols = document.getElementById('military-symbols');
+
+    if (searchInput.includes('communism')) {
+        communistSymbols.style.display = 'block';
+    } else {
+        communistSymbols.style.display = 'none';
+    }
+
+    if (searchInput.includes('military')) {
+        militarySymbols.style.display = 'block';
+    } else {
+        militarySymbols.style.display = 'none';
+    }
+
+    if (searchInput === '') return;
+
+    let matches = [];
+
+    allSymbols.forEach(symbol => {
+        const text = symbol.textContent.toLowerCase();
+
+        if (terms.some(term => text.includes(term))) {
+            matches.push(symbol.cloneNode(true));
         }
+    });
+
+    if (matches.length > 0) {
+        resultsContainer.style.display = 'block';
+        matches.forEach(m => resultsContainer.appendChild(m));
+    } else {
+        resultsContainer.style.display = 'none';
+    }
+}
     </script>
 </head>
 <body>
@@ -61,6 +89,9 @@
 
     
     <input type="text" id="searchInput" onkeyup="filterSymbols()" placeholder="Search symbols..." />
+    <div id="search-results" class="symbol-container" style="display:none; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;">
+</div>
+
     
     <div id="communist-symbols" style="display:none; margin-bottom:20px;">
         <h2>Communist Symbols</h2>
