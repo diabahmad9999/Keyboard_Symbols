@@ -68,12 +68,15 @@
     if (searchInput === '') return;
 
     let matches = [];
+    const addedSymbols = new Set();
 
     allSymbols.forEach(symbol => {
         const text = symbol.textContent.toLowerCase();
+        const symbolId = symbol.id || symbol.textContent;
 
-        if (terms.some(term => text.includes(term))) {
+        if (terms.some(term => text.includes(term)) && !addedSymbols.has(symbolId)) {
             matches.push(symbol.cloneNode(true));
+            addedSymbols.add(symbolId);
         }
     });
 
